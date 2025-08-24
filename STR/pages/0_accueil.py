@@ -75,6 +75,7 @@ custom_css = """
 
 
 st.markdown(custom_css, unsafe_allow_html=True)
+
 st.markdown(
     "<h4 style='text-align: center; color: white;'>Message</h4>",
     unsafe_allow_html=True
@@ -92,27 +93,37 @@ html_code = f"""
         color:white;
         cursor:pointer;
     ">▶️</button>
-    <audio id="myAudio" src="data:audio/mp3;base64,{b64_m4a}"></audio>
+    <audio id="myAudio" autoplay muted src="data:audio/mp3;base64,{b64_m4a}"></audio>
 </div>
 
 <script>
     const btn = document.getElementById("playButton");
     const audio = document.getElementById("myAudio");
 
-    // Régle le volume par défaut (0.0 = muet, 1.0 = volume max)
+    // Régle le volume par défaut
     audio.volume = 1.0;  
 
+    // Dès que l'audio peut jouer, enlever le muet pour qu'il soit audible
+    audio.oncanplaythrough = () => {{
+        audio.muted = false;
+        audio.play().catch(() => {{
+            console.log("Lecture automatique bloquée par le navigateur.");
+        }});
+    }};
+
+    // Gestion du bouton ▶️ / ⏸️
     btn.addEventListener("click", () => {{
         if (audio.paused) {{
             audio.play();
-            btn.textContent = "⏸️";  // change le bouton en pause
+            btn.textContent = "⏸️";
         }} else {{
             audio.pause();
-            btn.textContent = "▶️";   // change le bouton en lecture
+            btn.textContent = "▶️";
         }}
     }});
 </script>
 """
+
 
 components.html(html_code, height=250)
 
