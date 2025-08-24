@@ -1,3 +1,4 @@
 [[pages]]
 path = "pages/0_accueil.py"
 name = "Cadeau"
+icon = "🎵"
