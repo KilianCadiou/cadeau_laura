@@ -1,5 +1,6 @@
 import streamlit as st
 from st_pages import get_nav_from_toml
+import toml
 
 custom_css = """
     <style>
@@ -15,7 +16,6 @@ custom_css = """
     </style>
 """
 
-import toml
 
 # Charger et inspecter le fichier TOML
 config = toml.load("/Users/kilian/Documents/GitHub/cadeau_laura/STR/.streamlit/pages.toml")
@@ -27,7 +27,7 @@ nav = get_nav_from_toml("/Users/kilian/Documents/GitHub/cadeau_laura/STR/.stream
 
 st.markdown(custom_css, unsafe_allow_html=True)
 
-nav = get_nav_from_toml(".//Users/kilian/Documents/GitHub/cadeau_laura/STR/.streamlit/pages.toml")
+nav = get_nav_from_toml("//Users/kilian/Documents/GitHub/cadeau_laura/STR/.streamlit/pages.toml")
 
 pg = st.navigation(nav)
 
