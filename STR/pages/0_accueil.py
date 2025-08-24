@@ -32,95 +32,187 @@ else:
         mp3_bytes_alien = f.read()
     b64_mp3_alien = base64.b64encode(mp3_bytes_alien).decode()
 
-    # CSS personnalisé
-    custom_css = """
-        <style>
-        .stApp {
-            background-color: rgba(13, 52, 4, 0.6) !important;
-        }
-        section[data-testid="stSidebar"] {
-            background-color: #666866 !important;
-        }
-        </style>
-    """
-    st.markdown(custom_css, unsafe_allow_html=True)
+# 🔹 Chemin vers ton fichier enregistrement.m4a
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+m4a_path = os.path.join(BASE_DIR, "..", "static", "enregistrement.m4a")
+
+# Vérifier que le fichier existe
+if not os.path.isfile(m4a_path):
+    st.error(f"Fichier non trouvé : {m4a_path}")
+else:
+    # Charger et encoder en base64
+    with open(m4a_path, "rb") as f:
+        m4a_bytes = f.read()
+    b64_m4a = base64.b64encode(m4a_bytes).decode()
+
+    
+# CSS personnalisé
+custom_css = """
+    <style>
+    /* Fond principal en noir */
+    .stApp {
+        background-color: black !important;
+    }
+
+    /* Sidebar en noir */
+    section[data-testid="stSidebar"] {
+        background-color: black !important;
+    }
+
+    /* Texte en blanc pour la lisibilité */
+    .stApp, section[data-testid="stSidebar"] * {
+        color: white !important;
+    }
+
+    /* Boutons et champs en noir avec bordures blanches */
+    .stButton>button, .stTextInput>div>div>input, textarea, select {
+        background-color: black !important;
+        color: white !important;
+        border: 1px solid white !important;
+    }
+    </style>
+"""
+
+
+st.markdown(custom_css, unsafe_allow_html=True)
+st.markdown(
+    "<h4 style='text-align: center; color: white;'>Message</h4>",
+    unsafe_allow_html=True
+)
+
+html_code = f"""
+<div style="text-align:center; background-color:black; height:100vh; display:flex; justify-content:center; align-items:center;">
+    <button id="playButton" style="
+        background-color:white;
+        border:2px solid white;
+        border-radius:50%;
+        width:200px;
+        height:200px;
+        font-size:40px;
+        color:white;
+        cursor:pointer;
+    ">▶️</button>
+    <audio id="myAudio" src="data:audio/mp3;base64,{b64_m4a}"></audio>
+</div>
+
+<script>
+    const btn = document.getElementById("playButton");
+    const audio = document.getElementById("myAudio");
+
+    // Régle le volume par défaut (0.0 = muet, 1.0 = volume max)
+    audio.volume = 1.0;  
+
+    btn.addEventListener("click", () => {{
+        if (audio.paused) {{
+            audio.play();
+            btn.textContent = "⏸️";  // change le bouton en pause
+        }} else {{
+            audio.pause();
+            btn.textContent = "▶️";   // change le bouton en lecture
+        }}
+    }});
+</script>
+"""
+
+components.html(html_code, height=250)
 
 
 
 
-    st.markdown(
-        "<h4 style='text-align: center; color: white;'>Chanson 1</h4>",
-        unsafe_allow_html=True
-    )
+    # # HTML avec autoplay
+    # html_code = f"""
+    # <div style="text-align:center; background-color:black; padding:20px;">
+    #     <audio id="myAudio" autoplay controls>
+    #         <source src="data:audio/mp4;base64,{b64_m4a}" type="audio/mp4">
+    #         Ton navigateur ne supporte pas la lecture audio.
+    #     </audio>
+    #     <script>
+    #         const audio = document.getElementById("myAudio");
+    #         audio.play().catch(() => {{
+    #             console.log("Lecture auto bloquée, nécessite interaction.");
+    #         }});
+    #     </script>
+    # </div>
+    # """
 
-    html_code = f"""
-    <div style="text-align:center;">
-        <button id="playButton" style="
-            background-color:#ff4444;
-            border:none;
-            border-radius:50%;
-            width:200px;
-            height:200px;
-            font-size:40px;
-            color:white;
-            cursor:pointer;
-        ">▶️</button>
-        <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_felix_radu}"></audio>
-    </div>
-
-    <script>
-        const btn = document.getElementById("playButton");
-        const audio = document.getElementById("myAudio");
-
-        btn.addEventListener("click", () => {{
-            if (audio.paused) {{
-                audio.play();
-                btn.textContent = "⏸️";  // change le bouton en pause
-            }} else {{
-                audio.pause();
-                btn.textContent = "▶️";   // change le bouton en lecture
-            }}
-        }});
-    </script>
-    """
-
-    components.html(html_code, height=250)
+    # components.html(html_code, height=100)
 
 
-    st.markdown(
-        "<h4 style='text-align: center; color: white;'>Chanson 2</h4>",
-        unsafe_allow_html=True
-    )
+st.markdown(
+    "<h4 style='text-align: center; color: white;'>Chanson 1</h4>",
+    unsafe_allow_html=True
+)
 
-    html_code = f"""
-    <div style="text-align:center;">
-        <button id="playButton" style="
-            background-color:#ff4444;
-            border:none;
-            border-radius:50%;
-            width:200px;
-            height:200px;
-            font-size:40px;
-            color:white;
-            cursor:pointer;
-        ">▶️</button>
-        <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_alien}"></audio>
-    </div>
+html_code = f"""
+<div style="text-align:center; background-color:black; height:100vh; display:flex; justify-content:center; align-items:center;">
+    <button id="playButton" style="
+        background-color:white;
+        border:2px solid white;
+        border-radius:50%;
+        width:200px;
+        height:200px;
+        font-size:40px;
+        color:white;
+        cursor:pointer;
+    ">▶️</button>
+    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_felix_radu}"></audio>
+</div>
 
-    <script>
-        const btn = document.getElementById("playButton");
-        const audio = document.getElementById("myAudio");
+<script>
+    const btn = document.getElementById("playButton");
+    const audio = document.getElementById("myAudio");
 
-        btn.addEventListener("click", () => {{
-            if (audio.paused) {{
-                audio.play();
-                btn.textContent = "⏸️";  // change le bouton en pause
-            }} else {{
-                audio.pause();
-                btn.textContent = "▶️";   // change le bouton en lecture
-            }}
-        }});
-    </script>
-    """
+    btn.addEventListener("click", () => {{
+        if (audio.paused) {{
+            audio.play();
+            btn.textContent = "⏸️";  // change le bouton en pause
+        }} else {{
+            audio.pause();
+            btn.textContent = "▶️";   // change le bouton en lecture
+        }}
+    }});
+</script>
+"""
 
-    components.html(html_code, height=250)
+
+components.html(html_code, height=250)
+
+
+st.markdown(
+    "<h4 style='text-align: center; color: white;'>Chanson 2</h4>",
+    unsafe_allow_html=True
+)
+
+html_code = f"""
+<div style="text-align:center; background-color:black; height:100vh; display:flex; justify-content:center; align-items:center;">
+    <button id="playButton" style="
+        background-color:white;
+        border:2px solid white;
+        border-radius:50%;
+        width:200px;
+        height:200px;
+        font-size:40px;
+        color:white;
+        cursor:pointer;
+    ">▶️</button>
+    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_alien}"></audio>
+</div>
+
+<script>
+    const btn = document.getElementById("playButton");
+    const audio = document.getElementById("myAudio");
+
+    btn.addEventListener("click", () => {{
+        if (audio.paused) {{
+            audio.play();
+            btn.textContent = "⏸️";  // change le bouton en pause
+        }} else {{
+            audio.pause();
+            btn.textContent = "▶️";   // change le bouton en lecture
+        }}
+    }});
+</script>
+"""
+
+
+components.html(html_code, height=250)

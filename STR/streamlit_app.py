@@ -8,17 +8,23 @@ import os
 # -------------------------------
 custom_css = """
     <style>
-    /* Modifier l'arrière-plan de la page principale avec un dégradé */
+    /* Arrière-plan principal en blanc */
     .stApp {
-        background: linear-gradient(to bottom, rgba(13, 52, 4, 0.8), rgba(0, 0, 0, 0.8)) !important;
+        background: white !important;
     }
 
-    /* Modifier l'arrière-plan du volet de navigation (sidebar) avec un dégradé */
+    /* Sidebar également en blanc */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(to bottom, #666866, #333333) !important;
+        background: white !important;
+    }
+
+    /* (Optionnel) texte en noir pour contraster */
+    .stApp, section[data-testid="stSidebar"] * {
+        color: black !important;
     }
     </style>
 """
+
 
 st.markdown(custom_css, unsafe_allow_html=True)
 
