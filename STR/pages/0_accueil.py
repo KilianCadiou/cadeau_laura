@@ -46,11 +46,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    "<h4 style='text-align: center; color: white;'>📢 L'hyme de notre équipe !</h4>",
-    unsafe_allow_html=True
-)
-st.audio('STR/Allez tourner terrain.mp3')
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown(
+        "<h4 style='text-align: center; color: white;'>Chanson 1</h4>",
+        unsafe_allow_html=True
+    )
+    st.audio('STR/Flix Radu - Allez viens_.mp3')
 
 st.markdown(
     """
