@@ -75,7 +75,6 @@ custom_css = """
 
 
 st.markdown(custom_css, unsafe_allow_html=True)
-
 st.markdown(
     "<h4 style='text-align: center; color: white;'>Message</h4>",
     unsafe_allow_html=True
@@ -100,19 +99,20 @@ html_code = f"""
     const btn = document.getElementById("playButton");
     const audio = document.getElementById("myAudio");
 
-    // Régle le volume par défaut
-    audio.volume = 1.0;  
+    // Volume max
+    audio.volume = 1.0;
 
-    // Dès que l'audio peut jouer, enlever le muet pour qu'il soit audible
-    audio.oncanplaythrough = () => {{
+    // Dès que l'audio peut jouer, enlever le muet et lancer la lecture
+    audio.addEventListener("canplaythrough", () => {{
         audio.muted = false;
         audio.play().catch(() => {{
             console.log("Lecture automatique bloquée par le navigateur.");
         }});
-    }};
+    }});
 
-    // Gestion du bouton ▶️ / ⏸️
-    btn.addEventListener("click", () => {{
+    // Bouton ▶️ / ⏸️
+    btn.addEventListener("click", (event) => {{
+        event.stopPropagation(); // empêche d'interférer avec autoplay
         if (audio.paused) {{
             audio.play();
             btn.textContent = "⏸️";
@@ -123,7 +123,6 @@ html_code = f"""
     }});
 </script>
 """
-
 
 components.html(html_code, height=250)
 
