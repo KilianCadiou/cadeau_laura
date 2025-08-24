@@ -11,4 +11,3 @@ scikit-learn
 seaborn
 rapidfuzz
 st-pages
-base64
