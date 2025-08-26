@@ -126,28 +126,6 @@ html_code = f"""
 
 components.html(html_code, height=250)
 
-
-
-
-    # # HTML avec autoplay
-    # html_code = f"""
-    # <div style="text-align:center; background-color:black; padding:20px;">
-    #     <audio id="myAudio" autoplay controls>
-    #         <source src="data:audio/mp4;base64,{b64_m4a}" type="audio/mp4">
-    #         Ton navigateur ne supporte pas la lecture audio.
-    #     </audio>
-    #     <script>
-    #         const audio = document.getElementById("myAudio");
-    #         audio.play().catch(() => {{
-    #             console.log("Lecture auto bloquée, nécessite interaction.");
-    #         }});
-    #     </script>
-    # </div>
-    # """
-
-    # components.html(html_code, height=100)
-
-
 st.markdown(
     "<h4 style='text-align: center; color: white;'>Chanson 1</h4>",
     unsafe_allow_html=True
@@ -189,40 +167,51 @@ components.html(html_code, height=250)
 
 
 st.markdown(
-    "<h4 style='text-align: center; color: white;'>Chanson 2</h4>",
+    "<h4 style='text-align: center; color: white;'>Un Film/h4>",
     unsafe_allow_html=True
 )
 
-html_code = f"""
-<div style="text-align:center; background-color:black; height:100vh; display:flex; justify-content:center; align-items:center;">
-    <button id="playButton" style="
-        background-color:white;
-        border:2px solid white;
-        border-radius:50%;
-        width:200px;
-        height:200px;
-        font-size:40px;
-        color:white;
-        cursor:pointer;
-    ">▶️</button>
-    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_alien}"></audio>
-</div>
+# html_code = f"""
+# <div style="text-align:center; background-color:black; height:100vh; display:flex; justify-content:center; align-items:center;">
+#     <button id="playButton" style="
+#         background-color:white;
+#         border:2px solid white;
+#         border-radius:50%;
+#         width:200px;
+#         height:200px;
+#         font-size:40px;
+#         color:white;
+#         cursor:pointer;
+#     ">▶️</button>
+#     <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_alien}"></audio>
+# </div>
 
-<script>
-    const btn = document.getElementById("playButton");
-    const audio = document.getElementById("myAudio");
+# <script>
+#     const btn = document.getElementById("playButton");
+#     const audio = document.getElementById("myAudio");
 
-    btn.addEventListener("click", () => {{
-        if (audio.paused) {{
-            audio.play();
-            btn.textContent = "⏸️";  // change le bouton en pause
-        }} else {{
-            audio.pause();
-            btn.textContent = "▶️";   // change le bouton en lecture
-        }}
-    }});
-</script>
-"""
+#     btn.addEventListener("click", () => {{
+#         if (audio.paused) {{
+#             audio.play();
+#             btn.textContent = "⏸️";  // change le bouton en pause
+#         }} else {{
+#             audio.pause();
+#             btn.textContent = "▶️";   // change le bouton en lecture
+#         }}
+#     }});
+# </script>
+# """
 
 
-components.html(html_code, height=250)
+# components.html(html_code, height=250)
+
+
+st.markdown(
+    """
+    <div style="text-align: center;">
+    <a href="https://www.primevideo.com/detail/0KEKSSZG48Q1P3TH9AQ4LB6C6G/ref=atv_sr_fle_c_sre999aa_1_1_1?sr=1-1&pageTypeIdSource=ASIN&pageTypeId=B0866RLQYQ&qid=1756241638748" target="_blank">
+        <img src="https://raw.githubusercontent.com/KilianCadiou/Va-Te-Faire-Foot/main/STR/img/4096186-removebg-preview%20(1).png" width="60">
+    </a>
+    """,
+    unsafe_allow_html=True
+    )
