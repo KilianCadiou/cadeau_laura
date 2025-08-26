@@ -10,16 +10,16 @@ st.markdown(
 
 # Chemin vers le MP3 basé sur le fichier courant
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # dossier du script pages/
-mp3_path_felix_radu = os.path.join(BASE_DIR, "..", "static", "Flix Radu - Allez viens_.mp3")  # remonte à STR/static/
+mp3_path_terrenoire = os.path.join(BASE_DIR, "..", "static", "terrenoire.mp3")  # remonte à STR/static/
 
 # Vérifier que le fichier existe
-if not os.path.isfile(mp3_path_felix_radu):
-    st.error(f"Fichier MP3 non trouvé : {mp3_path_felix_radu}")
+if not os.path.isfile(mp3_path_terrenoire):
+    st.error(f"Fichier MP3 non trouvé : {mp3_path_terrenoire}")
 else:
     # Charger et encoder en base64
-    with open(mp3_path_felix_radu, "rb") as f:
-        mp3_bytes_felix_radu = f.read()
-    b64_mp3_felix_radu = base64.b64encode(mp3_bytes_felix_radu).decode()
+    with open(mp3_path_terrenoire, "rb") as f:
+        mp3_bytes_terrenoire = f.read()
+    b64_mp3_terrenoire = base64.b64encode(mp3_bytes_terrenoire).decode()
 
 mp3_path_alien = os.path.join(BASE_DIR, "..", "static", "Loin_dici.mp3")  # remonte à STR/static/
 
@@ -127,7 +127,7 @@ html_code = f"""
 components.html(html_code, height=250)
 
 st.markdown(
-    "<h4 style='text-align: center; color: white;'>Chanson 1</h4>",
+    "<h4 style='text-align: center; color: white;'>Chanson</h4>",
     unsafe_allow_html=True
 )
 
@@ -143,7 +143,7 @@ html_code = f"""
         color:white;
         cursor:pointer;
     ">▶️</button>
-    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_felix_radu}"></audio>
+    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_terrenoire}"></audio>
 </div>
 
 <script>
@@ -167,7 +167,7 @@ components.html(html_code, height=250)
 
 
 st.markdown(
-    "<h4 style='text-align: center; color: white;'>Un Film/h4>",
+    "<h4 style='text-align: center; color: white;'>Un Film</h4>",
     unsafe_allow_html=True
 )
 
@@ -210,7 +210,7 @@ st.markdown(
     """
     <div style="text-align: center;">
     <a href="https://www.primevideo.com/detail/0KEKSSZG48Q1P3TH9AQ4LB6C6G/ref=atv_sr_fle_c_sre999aa_1_1_1?sr=1-1&pageTypeIdSource=ASIN&pageTypeId=B0866RLQYQ&qid=1756241638748" target="_blank">
-        <img src="https://raw.githubusercontent.com/KilianCadiou/Va-Te-Faire-Foot/main/STR/img/4096186-removebg-preview%20(1).png" width="60">
+        <img src="https://raw.githubusercontent.com/KilianCadiou/cadeau_laura/main/STR/img/pdf_82a53edc-36af-11e9-8fee-a66a916a465e.jpg" width="500">
     </a>
     """,
     unsafe_allow_html=True
