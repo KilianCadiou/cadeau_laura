@@ -75,6 +75,7 @@ custom_css = """
 
 
 st.markdown(custom_css, unsafe_allow_html=True)
+
 st.markdown(
     "<h4 style='text-align: center; color: white;'>Message</h4>",
     unsafe_allow_html=True
@@ -215,3 +216,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
     )
+
