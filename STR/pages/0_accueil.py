@@ -128,6 +128,22 @@ html_code = f"""
 components.html(html_code, height=250)
 
 st.markdown(
+    "<h4 style='text-align: center; color: white;'>Cadeau</h4>",
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div style="text-align: center;">
+    <a href="https://drive.google.com/file/d/1HluGkX4LnzYwH1PR6EcJYqLUDj63NOQ3/view?usp=sharing" target="_blank">
+        <img src="https://raw.githubusercontent.com/KilianCadiou/cadeau_laura/main/STR/img/Sans titre.jpg" width="500">
+    </a>
+    """,
+    unsafe_allow_html=True
+    )
+
+
+st.markdown(
     "<h4 style='text-align: center; color: white;'>Chanson</h4>",
     unsafe_allow_html=True
 )
