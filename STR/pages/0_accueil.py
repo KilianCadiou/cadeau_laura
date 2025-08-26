@@ -136,7 +136,7 @@ st.markdown(
     """
     <div style="text-align: center;">
     <a href="https://drive.google.com/file/d/1HluGkX4LnzYwH1PR6EcJYqLUDj63NOQ3/view?usp=sharing" target="_blank">
-        <img src="https://raw.githubusercontent.com/KilianCadiou/cadeau_laura/main/STR/img/Sans titre.jpg" width="500">
+        <img src="https://raw.githubusercontent.com/KilianCadiou/cadeau_laura/main/STR/img/Sans titre.png" width="300">
     </a>
     """,
     unsafe_allow_html=True
@@ -160,7 +160,7 @@ html_code = f"""
         color:white;
         cursor:pointer;
     ">▶️</button>
-    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_terrenoire}"></audio>
+    <audio id="myAudio" src="data:audio/mp3;base64,{b64_mp3_alien}"></audio>
 </div>
 
 <script>
